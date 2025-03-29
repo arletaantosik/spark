@@ -1,4 +1,4 @@
-%run ./01-streaming
+%run ./01-batch
 #to import notebook
 class batchWCTestSuite():
     def __init__(self):
