@@ -36,3 +36,6 @@ class batchWC():
         resultDF = self.getWordCount(qualityDF)
         self.overwriteWordCount(resultDF)
         print("Done")
+
+batch = batchWC()
+batch.wordCount()
