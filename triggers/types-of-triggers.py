@@ -22,7 +22,7 @@
   # one-time micro-batch trigger to process all the available data and then stop on its own 
   # incremental batch - hours
   # if we want to run a trigger every one hour, we have to schedule an application to start every hour
-  # more cost efficiency than the 2nd approach
+  # more cost efficiency than the 2nd approach -> if we set that in 2nd approach, even the processing ends in 2 minutes, the resources are being used even if the batch is waiting for another 58 minutes
 
   df.writeStream \
     .format("delta")  \
