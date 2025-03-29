@@ -37,3 +37,6 @@ class streamWC():
         sQuery = self.overwriteWordCount(resultDF)
         print("Done")
         return sQuery
+
+batch = streamWC()
+batch.wordCount()
