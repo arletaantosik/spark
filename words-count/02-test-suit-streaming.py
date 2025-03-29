@@ -1,3 +1,5 @@
+%run ./01-streaming
+
 class streamWCTestSuite():
     def __init__(self):
         self.base_data_dir = "/FileStore/data_spark_streaming_scholarnest"
