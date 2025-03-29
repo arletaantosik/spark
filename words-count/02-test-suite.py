@@ -1,6 +1,6 @@
 %run ./01-streaming
 #to import notebook
-class streamWCTestSuite():
+class batchWCTestSuite():
     def __init__(self):
         self.base_data_dir = "/FileStore/data_spark_streaming_scholarnest"
 
@@ -56,3 +56,6 @@ class streamWCTestSuite():
         print("Third iteration of batch word count completed.\n")
 
         sQuery.stop()
+        
+bwcTS = batchWCTestSuite()
+bwcTS.runTests()
