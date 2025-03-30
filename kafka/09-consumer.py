@@ -18,3 +18,6 @@ df = ( spark.read
 
 
 display(df)
+# to see data from kafka; binary bytecode
+# timpestamp - when data was created by the producer, timestampType - when the message was received at the kafka cluster
+# if timestampType=0, then timestamp is event time, when the data was sent by producer
