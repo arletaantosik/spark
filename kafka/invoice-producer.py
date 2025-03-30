@@ -8,11 +8,11 @@ import time
 class InvoiceProducer:
     def __init__(self):
         self.topic = "invoices"
-        self.conf = {'bootstrap.servers': 'pkc-6ojv2.us-west4.gcp.confluent.cloud:9092', #location of the kafka cluster + port in which kafka cluster is listening to
+        self.conf = {'bootstrap.servers': 'xyz:9092', #location of the kafka cluster + port in which kafka cluster is listening to; from confuelnt.clound -> cluster setting -> endpoints
                      'security.protocol': 'SASL_SSL', # only applications that have credential to send data to a particular topic should be allowed
                      'sasl.mechanism': 'PLAIN',
-                     'sasl.username': 'M4DVA3BPMOUH4RSN',
-                     'sasl.password': '2ONBxDYYc/YSg1+ZOdnsjFw3UxeSzjAV5vi26a8rvuNAyYGWB3EgjjAOpOQFnIoL',
+                     'sasl.username': '', # API keys -> create a key -> global access ->
+                     'sasl.password': '',
                      'client.id': "arleta-laptop"}
 
     def delivery_callback(self, err, msg): #2nd argument - error, 3rd message
@@ -34,8 +34,10 @@ class InvoiceProducer:
 
     def start(self):
         kafka_producer = Producer(self.conf)
-        self.produce_invoices(kafka_producer)
-        kafka_producer.flush()
+        self.produce_invoices(kafka_producer) #asynch for acknowledgement
+        kafka_producer.flush() #timeout - if there's an acknowledgement is still not received (to kafka), wait 10 seconds before terminating an application
+        #when everything is ok, it was successful or an error message - program ends immediately
+        # by default - infinity 
 
 
 if __name__ == "__main__":
